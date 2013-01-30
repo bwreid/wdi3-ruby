@@ -152,3 +152,12 @@ h.flatten.uniq.compact.min # RETURNS 1
 (1..10).to_a.sample # PRINTS ONE RANDOM NUMBER
 
 ['a', 'b', 'v'].index('v') # PRINTS 1, COUNTS THE NUMBER OF ITEMS THERE
+
+# ====================================
+# GIT, REDUX
+# ====================================
+
+# Person A creates the repo, then creates and pushes a new branch
+# Person B doesn't have that branch. They do:
+### git fetch
+### git branch --track dev origin/dev
