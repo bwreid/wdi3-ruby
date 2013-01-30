@@ -146,3 +146,9 @@ h.flatten.uniq.compact.min # RETURNS 1
 (1..10).map { |i| i*i }.reduce(:+) # RETURNS A NEW ARRAY BASED ON THE PARAMETERS, BASED ON THE OLD ARRAY
 # FIRST, RETURNS: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 # THEN, VIA REDUCE, ADDS THEM ALL TOGETHER: 385
+
+(1..10).to_a.shuffle # PRINTS THE ARRAY, SHUFFLED AROUND
+
+(1..10).to_a.sample # PRINTS ONE RANDOM NUMBER
+
+['a', 'b', 'v'].index('v') # PRINTS 1, COUNTS THE NUMBER OF ITEMS THERE
