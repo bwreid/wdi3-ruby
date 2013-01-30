@@ -74,3 +74,24 @@ x["sally".to_sym] = 21
 x["sue".to_sym] = 25
 puts x # PUTS {:frank=>20, :sally=>21, :sue=>25}
 
+x.keys # PRINTS ["frank", "sally", "sue"]
+
+bryanreid = {:first=>"Bryan", :last=>"Reid", :age=>25}
+johnstamos = {:first=>"John", :last=>"Stamos", :age=>34}
+
+people = {:bryanreid => bryanreid, :johnstamos => johnstamos}
+
+people[:bryanreid][:last] # PRINTS "REID"
+people[:johnstamos][:age] # PRINTS 34
+
+puts "What's your first name?"
+first = gets.chomp.downcase
+puts "What's your last name?"
+last = gets.chomp.downcase
+
+search = first + last # CONCATENATES STRING
+search = search.to_sym # CHANGES IT TO A SYMBOL
+
+puts "Hi! Here's your age."
+puts people[ search ][:age] # SEARCHES THROUGH SYSTEM WITH THE NEW KEY, AND FINDS AGE
+
