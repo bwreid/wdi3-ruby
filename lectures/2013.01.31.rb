@@ -90,23 +90,30 @@ require 'pry'
 
 class Dog
   attr_accessor :type, :first, :gender # "DOGS" NOW HAS EVERYTHING BELOW WITH LESS CODE!
+  # THESE ARE INSTANCE METHODS ^^^^^^^
   def initialize(type, gender, first = "Puppy") # THIS LOADS AUTOMATICALLY ON INITALIZATION
-    @type = type
+    @type = type # THESE ARE INSTANCE VARIABES
     @gender = gender
     @first = first
   end
 
-  def about
-    puts "bowowowowowowowoowow!"
-    puts "(My name is #{@first} and I'm a #{@gender} #{@type}!)"
+  def to_s # NOW WHEN YOU JUST TYPE THE VARIABLE NAME, IT PUTS THIS; OR, to_s MAKES A STRING
+    "(My name is #{@first} and I'm a #{@gender} #{@type}!)"
+  end
+
+  def self.speak # THIS BECOMES A CLASS METHOD; IT COULD ALSO BE Dog.speak
+    puts "I am a Dog class. Ruff."
   end
 
 end
 
-fido = Dog.new("Terrier", "Boy", "Fido")
-fido.about
+# fido = Dog.new("Terrier", "Boy", "Fido")
+# maggie = Dog.new("Labrador", "Girl", "Maggie")
+# fido # (My name is Fido and I'm a Boy Terrier!)
+# fido.to_s # "(My name is Fido and I'm a Boy Terrier!)"
 
-binding.pry
+# Dog.speak # RETURNS 'I am a Dog Class. Ruff.'
+# YOU CAN DO THIS WHEN YOU WANT THE RESULTS OF A METHOD BUT DON'T WANT TO CREATE A CLASS
 
 # ==========================================
 # FUN STUFF WITH PRY
@@ -121,3 +128,52 @@ binding.pry
 
 # YOU CAN DO THIS FOR ANY CLASS! SO ARRAYS, NUMBERS...
 # locals: _  __  _dir_  _ex_  _file_  _in_  _out_  _pry_
+
+# ==========================================
+# INHERITANCE
+# ==========================================
+
+# CLASSES INHERIT METHODS FROM OTHER CLASSES
+
+# class ShowDog < Dog # ShowDog NOW HAS ALL THE PROPERTIES OF Dog
+#   def speak
+#     puts "I'm a dignified Dog. Ruff."
+#   end
+# end
+
+# gertrude = ShowDog.new("Fancy", "Girl", "Gertrude")
+# gertrude.speak # RETURNS "I'm a dignified dog. Ruff."
+# gertrude # RETURNS VALUE (My name is Gertrude and I'm a Girl Fancy!)
+
+# ==========================================
+# MODULES
+# ==========================================
+
+# YOU CAN "INHERIT" SOME FUNCTIONALITY FROM MULTIPLE SOURCES
+
+module Opine # MODULES ARE JUST LIKE CLASSES BUT YOU CANNOT DO A.new; IT DOES NOT CREATE OBJECTS
+  def opine_politics
+    puts "Politics these days..."
+  end
+  def opine_culture
+    puts "Today's millenials are the worst..."
+  end
+end
+
+module Share # YOU CAN INCLUDES MODULES IN CLASSES
+  def share_tmi
+    puts "This one time, at band camp..."
+  end
+end
+
+class SmartDog < Dog
+  include Share # INCLUDES THE MODULE ABOVE
+  include Opine # NOW THESE CAN BE INCLUDED IN SmartDog BUT NOT Dog
+end
+
+teddy = SmartDog.new("Shiba Inu", "Boy", "Teddy")
+fido = Dog.new("Terrier", "Boy", "Fido")
+teddy.share_tmi # RETURNS "This one time, at band camp..."
+# fido.share_tmi # RETURNS ERROR
+
+binding.pry
