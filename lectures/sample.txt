@@ -1,0 +1,7 @@
+bryan, 25, male
+alex, 23, male
+alice, 34, female
+ben, 23, male
+sarah, 34, female
+tom, 22, male
+yolanda, 34, female
